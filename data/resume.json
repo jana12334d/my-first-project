@@ -1,0 +1,47 @@
+{
+  "profile": {
+    "name": "Jana Mufti",
+    "tagline": "Designing intelligent systems. Securing what matters.",
+    "email": "jana@example.com",
+    "github": "https://github.com/jana",
+    "linkedin": "https://linkedin.com/in/jana"
+  },
+  "education": [
+    {
+      "degree": "B.S. Computer Science",
+      "concentration": "Artificial Intelligence & Cybersecurity",
+      "school": "Effat University",
+      "year": "2023 - Present",
+      "gpa": "3.9/4.0"
+    }
+  ],
+  "skills": {
+    "Programming Languages": ["Python", "C++", "JavaScript/TypeScript", "Rust", "SQL"],
+    "AI/ML Tools": ["PyTorch", "TensorFlow", "Scikit-learn", "Pandas", "OpenCV"],
+    "Security Tools": ["Wireshark", "Burp Suite", "Metasploit", "Nmap", "Ghidra"],
+    "Frameworks": ["React", "Node.js", "FastAPI", "Docker", "Git"]
+  },
+  "experience": [
+    {
+      "role": "Security Intern",
+      "company": "CyberDefense Corp",
+      "duration": "Summer 2024",
+      "description": "Assisted in vulnerability assessments of web applications. Automating threat intelligence feeds using Python scripts."
+    },
+    {
+      "role": "Undergraduate Researcher",
+      "company": "AI Safety Lab",
+      "duration": "Jan 2024 - Present",
+      "description": "Researching adversarial attacks on large language models. Co-authored a paper on prompt injection mitigation strategies."
+    }
+  ],
+  "certifications": [
+    "CompTIA Security+",
+    "AWS Certified Cloud Practitioner",
+    "Google Cybersecurity Professional Certificate"
+  ],
+  "achievements": [
+    "Dean's List (All Semesters)",
+    "1st Place, Effat University Hackathon 2024"
+  ]
+}

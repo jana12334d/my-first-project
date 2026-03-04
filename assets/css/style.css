@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-accent: #a78bfa; /* Lavender-400 */
+  --color-accent-dim: #8b5cf6; /* Violet-500 */
+  --color-bg-dark: #0f172a; /* Slate-900 */
+  --color-panel: #1e293b; /* Slate-800 */
+  --color-text-main: #f8fafc; /* Slate-50 */
+  --color-text-muted: #94a3b8; /* Slate-400 */
+}
+
+/* Custom Utilities */
+.glass-panel {
+  @apply bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
+}
+
+.terminal-text {
+  @apply font-mono text-sm;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(167, 139, 250, 0.05), transparent);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full hover:bg-slate-600;
+}
+
+/* Utility for hiding scrollbar but keeping functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

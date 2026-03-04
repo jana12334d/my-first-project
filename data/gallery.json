@@ -1,0 +1,26 @@
+[
+  {
+    "id": "img1",
+    "src": "https://picsum.photos/seed/tech1/800/600",
+    "caption": "Neural Network Visualization",
+    "category": "Tech"
+  },
+  {
+    "id": "img2",
+    "src": "https://picsum.photos/seed/arch/800/600",
+    "caption": "Urban Geometry",
+    "category": "Photography"
+  },
+  {
+    "id": "img3",
+    "src": "https://picsum.photos/seed/code/800/600",
+    "caption": "Late Night Debugging",
+    "category": "Tech"
+  },
+  {
+    "id": "img4",
+    "src": "https://picsum.photos/seed/nature/800/600",
+    "caption": "Pattern Recognition in Nature",
+    "category": "Photography"
+  }
+]

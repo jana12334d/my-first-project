@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sentinel-ai",
+    "title": "Sentinel AI",
+    "description": "An anomaly detection system for network traffic that uses unsupervised learning to identify potential zero-day intrusions.",
+    "category": "Cybersecurity",
+    "tags": ["Python", "TensorFlow", "Wireshark", "Scikit-learn"],
+    "github": "https://github.com/jana/sentinel-ai",
+    "demo": "#",
+    "details": "Sentinel AI analyzes packet capture data in real-time. Unlike signature-based IDS, it establishes a baseline of normal network behavior and flags statistical deviations. Achieved 94% accuracy on the NSL-KDD dataset."
+  },
+  {
+    "id": "neural-style-transfer",
+    "title": "NeuroArt Engine",
+    "description": "A generative art tool that applies the stylistic elements of classic paintings to modern digital photography.",
+    "category": "AI",
+    "tags": ["PyTorch", "React", "FastAPI", "OpenCV"],
+    "github": "https://github.com/jana/neuroart",
+    "demo": "https://neuroart-demo.com",
+    "details": "Implemented a VGG-19 based style transfer algorithm. Optimized inference time by 40% using model quantization. Built a simple frontend to allow users to upload content and style images."
+  },
+  {
+    "id": "secure-chat",
+    "title": "Whisper Protocol",
+    "description": "End-to-end encrypted messaging application implementing the Signal Protocol for perfect forward secrecy.",
+    "category": "Cybersecurity",
+    "tags": ["Rust", "WebAssembly", "Cryptography", "Socket.io"],
+    "github": "https://github.com/jana/whisper-protocol",
+    "demo": "#",
+    "details": "Built from scratch to understand cryptographic primitives. Features include self-destructing messages, key verification, and offline message queuing. Audited by peer group for common vulnerabilities."
+  },
+  {
+    "id": "home-lab",
+    "title": "Home Lab Infrastructure",
+    "description": "Self-hosted homelab running Proxmox with segregated VLANs for malware analysis and media streaming.",
+    "category": "Systems",
+    "tags": ["Docker", "Kubernetes", "Linux", "Networking"],
+    "github": "https://github.com/jana/homelab-config",
+    "demo": null,
+    "details": "Managed via Ansible playbooks. Includes a Pi-hole DNS sinkhole, a WireGuard VPN entry point, and a Grafana dashboard for monitoring system health and network traffic."
+  }
+]
