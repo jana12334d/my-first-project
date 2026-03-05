@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanaOS Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span>JanaOS</span> <span class="badge">ADMIN</span>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="profile">Profile & Links</button>
+                <button class="nav-btn" data-tab="skills">Skills</button>
+                <button class="nav-btn" data-tab="projects">Projects</button>
+                <button class="nav-btn" data-tab="gallery">Gallery</button>
+                <div class="nav-divider"></div>
+                <button class="nav-btn export-btn" data-tab="export">Import / Export</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Notification Toast -->
+            <div id="toast" class="toast hidden">Action Successful</div>
+
+            <!-- Profile Section -->
+            <section id="profile" class="tab-content active">
+                <header class="section-header">
+                    <h2>Profile & Links</h2>
+                    <p>Manage your personal information and social connections.</p>
+                </header>
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="p-name" placeholder="e.g. Jana Mufti">
+                </div>
+
+                <div class="form-group">
+                    <label>Title / Tagline</label>
+                    <input type="text" id="p-title" placeholder="e.g. AI & Cybersecurity Student">
+                </div>
+
+                <div class="form-group">
+                    <label>University</label>
+                    <input type="text" id="p-university" placeholder="e.g. Effat University">
+                </div>
+
+                <div class="form-group">
+                    <label>Short Bio (Hero Section)</label>
+                    <textarea id="p-bio" rows="3" placeholder="A short introduction..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Long About Description</label>
+                    <textarea id="p-about" rows="6" placeholder="Detailed background..."></textarea>
+                </div>
+
+                <h3 class="subsection-title">Social Links</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>GitHub URL</label>
+                        <input type="text" id="l-github" placeholder="https://github.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label>LinkedIn URL</label>
+                        <input type="text" id="l-linkedin" placeholder="https://linkedin.com/in/...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="l-email" placeholder="jana@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Resume URL (PDF)</label>
+                        <input type="text" id="l-resume" placeholder="/assets/resume.pdf">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="tab-content">
+                <header class="section-header">
+                    <h2>Technical Skills</h2>
+                    <p>Categorize your technical abilities.</p>
+                </header>
+
+                <div class="skills-grid">
+                    <!-- Languages -->
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <div class="tag-input-container">
+                            <input type="text" class="skill-input" data-category="languages" placeholder="Add language + Enter">
+                            <button class="add-skill-btn">+</button>
+                        </div>
+                        <div class="tags-list" id="skills-languages"></div>
+                    </div>
+
+                    <!-- AI Tools -->
+                    <div class="skill-category">
+                        <h3>AI / ML Tools</h3>
+                        <div class="tag-input-container">
+                            <input type="text" class="skill-input" data-category="ai_tools" placeholder="Add tool + Enter">
+                            <button class="add-skill-btn">+</button>
+                        </div>
+                        <div class="tags-list" id="skills-ai_tools"></div>
+                    </div>
+
+                    <!-- Security Tools -->
+                    <div class="skill-category">
+                        <h3>Security Tools</h3>
+                        <div class="tag-input-container">
+                            <input type="text" class="skill-input" data-category="security_tools" placeholder="Add tool + Enter">
+                            <button class="add-skill-btn">+</button>
+                        </div>
+                        <div class="tags-list" id="skills-security_tools"></div>
+                    </div>
+
+                    <!-- Frameworks -->
+                    <div class="skill-category">
+                        <h3>Frameworks & Others</h3>
+                        <div class="tag-input-container">
+                            <input type="text" class="skill-input" data-category="frameworks" placeholder="Add framework + Enter">
+                            <button class="add-skill-btn">+</button>
+                        </div>
+                        <div class="tags-list" id="skills-frameworks"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="tab-content">
+                <header class="section-header">
+                    <h2>Projects</h2>
+                    <p>Showcase your work.</p>
+                </header>
+
+                <div class="project-form card">
+                    <h3>Add / Edit Project</h3>
+                    <input type="hidden" id="proj-id">
+                    
+                    <div class="form-group">
+                        <label>Project Title</label>
+                        <input type="text" id="proj-title">
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="proj-category">
+                                <option value="AI">Artificial Intelligence</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                                <option value="Systems">Systems</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tech Stack (comma separated)</label>
+                            <input type="text" id="proj-tags" placeholder="Python, React, etc.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Short Description</label>
+                        <input type="text" id="proj-desc" placeholder="One sentence summary">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Details</label>
+                        <textarea id="proj-details" rows="3"></textarea>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>GitHub Link</label>
+                            <input type="text" id="proj-github">
+                        </div>
+                        <div class="form-group">
+                            <label>Demo Link</label>
+                            <input type="text" id="proj-demo">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button id="save-project-btn" class="btn btn-primary">Save Project</button>
+                        <button id="clear-project-btn" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </div>
+
+                <div id="projects-list" class="items-list">
+                    <!-- Projects rendered here -->
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section id="gallery" class="tab-content">
+                <header class="section-header">
+                    <h2>Creative Gallery</h2>
+                    <p>Photography and visual items.</p>
+                </header>
+
+                <div class="gallery-form card">
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text" id="gal-src" placeholder="https://...">
+                        </div>
+                        <div class="form-group">
+                            <label>Caption</label>
+                            <input type="text" id="gal-caption" placeholder="Image description">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="gal-category">
+                            <option value="Photography">Photography</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <button id="add-gallery-btn" class="btn btn-primary">Add Image</button>
+                </div>
+
+                <div id="gallery-list" class="gallery-grid">
+                    <!-- Gallery items rendered here -->
+                </div>
+            </section>
+
+            <!-- Export Section -->
+            <section id="export" class="tab-content">
+                <header class="section-header">
+                    <h2>Data Management</h2>
+                    <p>Import existing data or export your changes.</p>
+                </header>
+
+                <div class="card">
+                    <h3>Import Data</h3>
+                    <p class="text-muted">Load an existing <code>portfolio-data.json</code> file to edit.</p>
+                    <div class="file-upload">
+                        <input type="file" id="import-file" accept=".json">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Export Data</h3>
+                    <p class="text-muted">Download the updated JSON file. Place this file in your <code>/data</code> folder.</p>
+                    <button id="export-btn" class="btn btn-accent large-btn">Download portfolio-data.json</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

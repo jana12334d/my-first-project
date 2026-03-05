@@ -8,7 +8,7 @@ export async function loadProjects() {
     if (!container) return;
 
     try {
-        const response = await fetch('/data/projects.json');
+        const response = await fetch('./data/projects.json');
         if (!response.ok) throw new Error('Failed to load projects');
         const projects = await response.json();
         renderProjects(projects, container);

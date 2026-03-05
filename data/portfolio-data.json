@@ -1,0 +1,57 @@
+{
+  "profile": {
+    "name": "Jana Mufti",
+    "title": "AI & Cybersecurity Student",
+    "university": "Effat University",
+    "bio": "Designing intelligent systems. Securing what matters.",
+    "about": "I am a Computer Science student at Effat University, where I bridge the gap between building intelligent agents and securing the infrastructure they run on.\n\nMy academic journey focuses on Artificial Intelligence and Cybersecurity. I am deeply curious about how systems \"think\" through algorithms and how they can be broken—and subsequently protected—from malicious actors.\n\nBeyond the terminal, I view the world through a creative lens. My interest in photography teaches me to look for details others miss, while my love for video games fuels my appreciation for complex, interactive systems."
+  },
+  "links": {
+    "github": "https://github.com/jana",
+    "linkedin": "https://linkedin.com/in/jana",
+    "email": "jana@example.com",
+    "resume": "assets/resume.pdf"
+  },
+  "skills": {
+    "languages": ["Python", "C++", "JavaScript", "Rust", "SQL"],
+    "ai_tools": ["PyTorch", "TensorFlow", "Scikit-learn", "Pandas", "OpenCV"],
+    "security_tools": ["Wireshark", "Burp Suite", "Metasploit", "Nmap", "Ghidra"],
+    "frameworks": ["React", "Node.js", "FastAPI", "Docker", "Git"]
+  },
+  "projects": [
+    {
+      "id": "sentinel-ai",
+      "title": "Sentinel AI",
+      "description": "An anomaly detection system for network traffic that uses unsupervised learning to identify potential zero-day intrusions.",
+      "category": "Cybersecurity",
+      "tags": ["Python", "TensorFlow", "Wireshark", "Scikit-learn"],
+      "github": "https://github.com/jana/sentinel-ai",
+      "demo": "#",
+      "details": "Sentinel AI analyzes packet capture data in real-time. Unlike signature-based IDS, it establishes a baseline of normal network behavior and flags statistical deviations. Achieved 94% accuracy on the NSL-KDD dataset."
+    },
+    {
+      "id": "neural-style-transfer",
+      "title": "NeuroArt Engine",
+      "description": "A generative art tool that applies the stylistic elements of classic paintings to modern digital photography.",
+      "category": "AI",
+      "tags": ["PyTorch", "React", "FastAPI", "OpenCV"],
+      "github": "https://github.com/jana/neuroart",
+      "demo": "https://neuroart-demo.com",
+      "details": "Implemented a VGG-19 based style transfer algorithm. Optimized inference time by 40% using model quantization. Built a simple frontend to allow users to upload content and style images."
+    }
+  ],
+  "gallery": [
+    {
+      "id": "img1",
+      "src": "https://picsum.photos/seed/tech1/800/600",
+      "caption": "Neural Network Visualization",
+      "category": "Tech"
+    },
+    {
+      "id": "img2",
+      "src": "https://picsum.photos/seed/arch/800/600",
+      "caption": "Urban Geometry",
+      "category": "Photography"
+    }
+  ]
+}

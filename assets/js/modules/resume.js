@@ -8,7 +8,7 @@ export async function loadResume() {
     if (!container) return;
 
     try {
-        const response = await fetch('/data/resume.json');
+        const response = await fetch('./data/resume.json');
         if (!response.ok) throw new Error('Failed to load resume');
         const data = await response.json();
         renderResume(data, container);
@@ -128,7 +128,7 @@ function renderResume(data, container) {
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                             System Logs (Experience)
                         </h3>
-                        <a href="/assets/resume.pdf" download class="text-xs font-mono bg-accent/10 text-accent border border-accent/20 px-3 py-1.5 rounded hover:bg-accent hover:text-white transition-all flex items-center gap-2">
+                        <a href="assets/resume.pdf" download class="text-xs font-mono bg-accent/10 text-accent border border-accent/20 px-3 py-1.5 rounded hover:bg-accent hover:text-white transition-all flex items-center gap-2">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                             EXPORT.PDF
                         </a>
