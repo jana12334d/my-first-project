@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
     setupSkillInputs();
     
-    // Try to load from local storage if available (optional persistence)
+    // Try to load from local storage first (draft), otherwise fetch live data
     const saved = localStorage.getItem('janaos_admin_draft');
     if (saved) {
         try {
@@ -93,9 +93,59 @@ document.addEventListener('DOMContentLoaded', () => {
             showToast('Draft loaded from local storage');
         } catch (e) {
             console.error('Failed to load draft');
+            fetchCurrentData();
         }
+    } else {
+        fetchCurrentData();
     }
 });
+
+async function fetchCurrentData() {
+    try {
+        // Fetch all data sources in parallel
+        const [projectsRes, resumeRes, galleryRes] = await Promise.all([
+            fetch('../data/projects.json'),
+            fetch('../data/resume.json'),
+            fetch('../data/gallery.json')
+        ]);
+
+        if (projectsRes.ok && resumeRes.ok && galleryRes.ok) {
+            const projects = await projectsRes.json();
+            const resume = await resumeRes.json();
+            const gallery = await galleryRes.json();
+
+            // Map fetched data to appState structure
+            appState.profile = resume.profile || initialState.profile;
+            appState.links = {
+                github: resume.profile.github || "",
+                linkedin: resume.profile.linkedin || "",
+                email: resume.profile.email || "",
+                resume: "assets/resume.pdf" // Default or extracted if available
+            };
+            
+            // Map skills from resume structure to admin structure
+            if (resume.skills) {
+                appState.skills = {
+                    languages: resume.skills["Programming Languages"] || [],
+                    ai_tools: resume.skills["AI/ML Tools"] || [],
+                    security_tools: resume.skills["Security Tools"] || [],
+                    frameworks: resume.skills["Frameworks"] || []
+                };
+            }
+
+            appState.projects = projects || [];
+            appState.gallery = gallery || [];
+
+            populateUI();
+            showToast('Loaded current portfolio data');
+        } else {
+            throw new Error('Failed to load some data files');
+        }
+    } catch (error) {
+        console.error('Error fetching current data:', error);
+        showToast('Could not load current data. Starting fresh.');
+    }
+}
 
 // --- Event Listeners ---
 
@@ -395,19 +445,78 @@ window.deleteGalleryItemGlobal = deleteGalleryItem;
 // --- Import / Export ---
 
 function exportJSON() {
-    const dataStr = JSON.stringify(appState, null, 2);
-    const blob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
+    // 1. Export projects.json
+    downloadFile("projects.json", JSON.stringify(appState.projects, null, 2));
+
+    // 2. Export gallery.json
+    downloadFile("gallery.json", JSON.stringify(appState.gallery, null, 2));
+
+    // 3. Export resume.json (Reconstruct structure)
+    const resumeData = {
+        profile: {
+            ...appState.profile,
+            github: appState.links.github,
+            linkedin: appState.links.linkedin,
+            email: appState.links.email
+        },
+        education: [
+            {
+                degree: "B.S. Computer Science",
+                concentration: "Artificial Intelligence & Cybersecurity",
+                school: appState.profile.university || "Effat University",
+                year: "2023 - Present",
+                gpa: "3.9/4.0"
+            }
+        ],
+        skills: {
+            "Programming Languages": appState.skills.languages,
+            "AI/ML Tools": appState.skills.ai_tools,
+            "Security Tools": appState.skills.security_tools,
+            "Frameworks": appState.skills.frameworks
+        },
+        experience: [
+             {
+                role: "Security Intern",
+                company: "CyberDefense Corp",
+                duration: "Summer 2024",
+                description: "Assisted in vulnerability assessments of web applications. Automating threat intelligence feeds using Python scripts."
+            },
+            {
+                role: "Undergraduate Researcher",
+                company: "AI Safety Lab",
+                duration: "Jan 2024 - Present",
+                description: "Researching adversarial attacks on large language models. Co-authored a paper on prompt injection mitigation strategies."
+            }
+        ],
+        certifications: [
+            "CompTIA Security+",
+            "AWS Certified Cloud Practitioner",
+            "Google Cybersecurity Professional Certificate"
+        ],
+        achievements: [
+            "Dean's List (All Semesters)",
+            "1st Place, Effat University Hackathon 2024"
+        ]
+    };
     
+    // We download resume.json slightly delayed to prevent browser blocking multiple downloads
+    setTimeout(() => {
+        downloadFile("resume.json", JSON.stringify(resumeData, null, 2));
+    }, 500);
+
+    showToast('Exported 3 files. Place them in /data folder.');
+}
+
+function downloadFile(filename, content) {
+    const blob = new Blob([content], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = "portfolio-data.json";
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    
-    showToast('Exported portfolio-data.json');
 }
 
 function importJSON(e) {
