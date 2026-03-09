@@ -8,9 +8,10 @@ export async function loadGallery() {
     if (!container) return;
 
     try {
-        const response = await fetch('./data/gallery.json');
+        const response = await fetch('./data/portfolio-data.json');
         if (!response.ok) throw new Error('Failed to load gallery');
-        const items = await response.json();
+        const data = await response.json();
+        const items = data.gallery || [];
         renderGallery(items, container);
     } catch (error) {
         console.error(error);

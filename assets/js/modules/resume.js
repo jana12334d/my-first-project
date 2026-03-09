@@ -8,7 +8,7 @@ export async function loadResume() {
     if (!container) return;
 
     try {
-        const response = await fetch('./data/resume.json');
+        const response = await fetch('./data/portfolio-data.json');
         if (!response.ok) throw new Error('Failed to load resume');
         const data = await response.json();
         renderResume(data, container);
@@ -20,7 +20,7 @@ export async function loadResume() {
 
 function renderResume(data, container) {
     // Education Section
-    const educationHTML = data.education.map(edu => `
+    const educationHTML = (data.education || []).map(edu => `
         <div class="mb-4 border-l-2 border-accent/30 pl-4">
             <h4 class="text-white font-bold">${edu.school}</h4>
             <p class="text-accent text-sm">${edu.degree}</p>
@@ -32,8 +32,15 @@ function renderResume(data, container) {
         </div>
     `).join('');
 
-    // Skills Section
-    const skillsHTML = Object.entries(data.skills).map(([category, items]) => `
+    // Skills Section (mapping from the new structure)
+    const skillsMap = {
+        "Programming Languages": data.skills?.languages || [],
+        "AI/ML Tools": data.skills?.ai_tools || [],
+        "Security Tools": data.skills?.security_tools || [],
+        "Frameworks": data.skills?.frameworks || []
+    };
+
+    const skillsHTML = Object.entries(skillsMap).map(([category, items]) => `
         <div class="mb-4">
             <h4 class="text-xs font-mono uppercase text-slate-500 mb-2 tracking-wider">${category}</h4>
             <div class="flex flex-wrap gap-2">
@@ -47,7 +54,7 @@ function renderResume(data, container) {
     `).join('');
 
     // Experience Section
-    const experienceHTML = data.experience.map(exp => `
+    const experienceHTML = (data.experience || []).map(exp => `
         <div class="mb-6 group">
             <div class="flex justify-between items-baseline mb-1">
                 <h4 class="text-white font-bold group-hover:text-accent transition-colors">${exp.role}</h4>
@@ -61,7 +68,7 @@ function renderResume(data, container) {
     `).join('');
 
     // Certifications
-    const certsHTML = data.certifications.map(cert => `
+    const certsHTML = (data.certifications || []).map(cert => `
         <li class="text-sm text-slate-400 mb-1 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
             ${cert}
@@ -69,7 +76,7 @@ function renderResume(data, container) {
     `).join('');
 
     // Achievements (New)
-    const achievementsHTML = data.achievements ? `
+    const achievementsHTML = (data.achievements && data.achievements.length > 0) ? `
         <div class="glass-panel p-5 mt-6">
             <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>

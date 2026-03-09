@@ -8,9 +8,10 @@ export async function loadProjects() {
     if (!container) return;
 
     try {
-        const response = await fetch('./data/projects.json');
+        const response = await fetch('./data/portfolio-data.json');
         if (!response.ok) throw new Error('Failed to load projects');
-        const projects = await response.json();
+        const data = await response.json();
+        const projects = data.projects || [];
         renderProjects(projects, container);
         setupFilters(projects, container);
     } catch (error) {

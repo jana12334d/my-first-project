@@ -4,20 +4,52 @@
     "title": "AI & Cybersecurity Student",
     "university": "Effat University",
     "bio": "Designing intelligent systems. Securing what matters.",
-    "about": "I am a Computer Science student at Effat University, where I bridge the gap between building intelligent agents and securing the infrastructure they run on.\n\nMy academic journey focuses on Artificial Intelligence and Cybersecurity. I am deeply curious about how systems \"think\" through algorithms and how they can be broken—and subsequently protected—from malicious actors.\n\nBeyond the terminal, I view the world through a creative lens. My interest in photography teaches me to look for details others miss, while my love for video games fuels my appreciation for complex, interactive systems."
+    "about": "I am a Computer Science student at Effat University, where I bridge the gap between building intelligent agents and securing the infrastructure they run on.\n\nMy academic journey focuses on Artificial Intelligence and Cybersecurity. I am deeply curious about how systems \"think\" through algorithms and how they can be broken—and subsequently protected—from malicious actors.\n\nBeyond my coursework, I enjoy exploring emerging technologies, building small software projects, and learning about new developments in AI, machine learning, and cybersecurity. I am passionate about creating intelligent systems that are not only powerful but also secure and reliable."
   },
   "links": {
-    "github": "https://github.com/jana",
-    "linkedin": "https://linkedin.com/in/jana",
-    "email": "jana@example.com",
+    "github": "https://github.com/jana12334d",
+    "linkedin": "https://www.linkedin.com/in/jana-mufti-80632827a/",
+    "email": "jana.mufti@gmail.com",
     "resume": "assets/resume.pdf"
   },
+  "education": [
+    {
+      "degree": "B.S. Computer Science",
+      "concentration": "Artificial Intelligence & Cybersecurity",
+      "school": "Effat University",
+      "year": "2023 - Present",
+      "gpa": "3.35/4.0"
+    }
+  ],
   "skills": {
-    "languages": ["Python", "C++", "JavaScript", "Rust", "SQL"],
+    "languages": ["Python", "C++", "JavaScript/TypeScript", "Rust", "SQL"],
     "ai_tools": ["PyTorch", "TensorFlow", "Scikit-learn", "Pandas", "OpenCV"],
     "security_tools": ["Wireshark", "Burp Suite", "Metasploit", "Nmap", "Ghidra"],
     "frameworks": ["React", "Node.js", "FastAPI", "Docker", "Git"]
   },
+  "experience": [
+    {
+      "role": "Security Intern",
+      "company": "CyberDefense Corp",
+      "duration": "Summer 2024",
+      "description": "Assisted in vulnerability assessments of web applications. Automating threat intelligence feeds using Python scripts."
+    },
+    {
+      "role": "Undergraduate Researcher",
+      "company": "AI Safety Lab",
+      "duration": "Jan 2024 - Present",
+      "description": "Researching adversarial attacks on large language models. Co-authored a paper on prompt injection mitigation strategies."
+    }
+  ],
+  "certifications": [
+    "CompTIA Security+",
+    "AWS Certified Cloud Practitioner",
+    "Google Cybersecurity Professional Certificate"
+  ],
+  "achievements": [
+    "Dean's List (All Semesters)",
+    "1st Place, Effat University Hackathon 2024"
+  ],
   "projects": [
     {
       "id": "sentinel-ai",
@@ -43,14 +75,26 @@
   "gallery": [
     {
       "id": "img1",
-      "src": "https://picsum.photos/seed/tech1/800/600",
+      "src": "https://images.unsplash.com/photo-1677442136019-21780ecad995",
       "caption": "Neural Network Visualization",
       "category": "Tech"
     },
     {
       "id": "img2",
-      "src": "https://picsum.photos/seed/arch/800/600",
-      "caption": "Urban Geometry",
+      "src": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      "caption": "Software Development",
+      "category": "Photography"
+    },
+    {
+      "id": "img3",
+      "src": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b",
+      "caption": "Cybersecurity",
+      "category": "Tech"
+    },
+    {
+      "id": "img4",
+      "src": "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
+      "caption": "Algorithms and Data Structures",
       "category": "Photography"
     }
   ]
